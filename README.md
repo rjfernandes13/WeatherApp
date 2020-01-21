@@ -1,3 +1,5 @@
+Curso de React JS + Redux + ES6 de Udemy
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
