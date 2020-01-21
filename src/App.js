@@ -3,8 +3,7 @@ import { Grid, Row, Col } from "react-flexbox-grid";
 import { Paper, AppBar, Typography, Toolbar } from '@material-ui/core'
 import './App.css';
 import LocationList from './components/LocationList';
-import { MuiThemeProvider } from '@material-ui/core';
-
+import ForecastExtended from './components/ForecastExtended';
 
 const cities = [
   "Bogota,col",
@@ -15,11 +14,19 @@ const cities = [
 ]
 class App extends Component {
 
+  constructor() {
+    super();
+    this.state = {
+      city: null,
+    };
+  }
+
   handleSelectedLocation = city => {
-    console.log(`handleSelectedLocation ${city}`);
+    this.setState({ city })
   }
 
   render() {
+    const { city } = this.state;
     return (
       <Grid>
         <Row>
@@ -39,11 +46,15 @@ class App extends Component {
             />
           </Col>
           <Col xs={12} md={6}>
-          <Paper elevation={4}>
-          <div className='details'>
-            </div>
-          </Paper>
-            
+            <Paper zDepth={4}>
+              <div className='details'>
+                {city ?
+                  <ForecastExtended city={city} />
+                  :
+                  null
+                }
+              </div>
+            </Paper>
           </Col>
         </Row>
       </Grid>
@@ -53,4 +64,4 @@ class App extends Component {
 
 export default App;
 
-//video 77
+//video 100
