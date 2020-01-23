@@ -1,38 +1,25 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import { Grid, Row, Col } from "react-flexbox-grid";
-import { Paper, AppBar, Typography, Toolbar } from '@material-ui/core'
-import './App.css';
-import LocationList from './components/LocationList';
-import ForecastExtended from './components/ForecastExtended';
+import { Paper, AppBar, Typography, Toolbar } from "@material-ui/core";
+import "./App.css";
+import LocationListContainer from "./containers/LocationListContainer";
+import ForecastExtendedContainer from "./containers/ForecastExtendedContainer";
 
 const cities = [
   "Bogota,col",
   "Caracas,ve",
   "Lisboa,pt",
   "Washington, us",
-  "Barcelona, ve",
-]
+  "Barcelona, ve"
+];
 class App extends Component {
-
-  constructor() {
-    super();
-    this.state = {
-      city: null,
-    };
-  }
-
-  handleSelectedLocation = city => {
-    this.setState({ city })
-  }
-
   render() {
-    const { city } = this.state;
     return (
       <Grid>
         <Row>
-          <AppBar position='sticky'>
+          <AppBar position="sticky">
             <Toolbar>
-              <Typography variant='title' color='inherit'>
+              <Typography variant="h4" color="initial">
                 Weather App
               </Typography>
             </Toolbar>
@@ -40,19 +27,12 @@ class App extends Component {
         </Row>
         <Row>
           <Col xs={12} md={6}>
-            <LocationList
-              cities={cities}
-              onSelectedLocation={this.handleSelectedLocation}
-            />
+            <LocationListContainer cities={cities} />
           </Col>
           <Col xs={12} md={6}>
-            <Paper zDepth={4}>
-              <div className='details'>
-                {city ?
-                  <ForecastExtended city={city} />
-                  :
-                  null
-                }
+            <Paper>
+              <div className="details">
+                <ForecastExtendedContainer />
               </div>
             </Paper>
           </Col>
@@ -64,4 +44,4 @@ class App extends Component {
 
 export default App;
 
-//video 100
+//video 148
